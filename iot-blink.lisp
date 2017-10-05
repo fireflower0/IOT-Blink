@@ -38,10 +38,11 @@
       (:title "Web Application with Common Lisp and RaspberryPi"))
      (:body
       (:p "LED Blink") (:br)
-      (:form :method "post" :action "/post"
+      (:form :method "post" :action "/post" :target "iframe"
              (:input :type "submit" :name "led-blink" :value "on"))
-      (:form :method "post" :action "/post"
-             (:input :type "submit" :name "led-blink" :value "off")))))))
+      (:form :method "post" :action "/post" :target "iframe"
+             (:input :type "submit" :name "led-blink" :value "off"))
+      (:iframe :name "iframe"))))))
 
 ;; Create index
 (defun index (env)
@@ -52,10 +53,14 @@
 
 ;; POST process
 (defun post (env)
-  (let ((req (make-request env)))
+  (let ((req (make-request env))
+	status)
     `(200
       (:content-type "text/plain")
-      ,(blink (body-parameter req "led-blink")))))
+      ,(list
+	 (setf status (body-parameter req "led-blink"))
+	 (blink status)
+	 (format nil "LED Status : ~a" status)))))
 
 ;; Web Application Function
 (defroutes app (env)
