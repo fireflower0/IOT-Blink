@@ -42,15 +42,21 @@ Please download the following library to "~/quicklisp/local-projects/".
 
 - ASDF
 
-    $ git clone https://github.com/fare/asdf.git  
+```
+$ git clone https://github.com/fare/asdf.git  
+```
 
 - CFFI
 
-    $ git clone https://github.com/cffi/cffi.git  
+```
+$ git clone https://github.com/cffi/cffi.git  
+```
 
 - Clack
 
-    $ git clone https://github.com/unbit/clack.git  
+```
+$ git clone https://github.com/unbit/clack.git  
+```
 
 ## Usage
 
