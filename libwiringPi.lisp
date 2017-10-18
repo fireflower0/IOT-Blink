@@ -36,12 +36,12 @@
 
 ;;;; SPI library
 
-;; SPI初期化
+;; SPI initialization
 (defcfun "wiringPiSPISetup" :int (channel :int) (speed :int))
 
-;; SPI初期化(Mode設定)
+;; SPI initialization (Mode setting)
 (defcfun "wiringPiSPISetupMode" :int (channel :int) (speed :int) (mode :int))
 
-;; 選択されたSPIバス上での同時書込み／読出しトランザクションを実行
+;; Execute concurrent write / read transactions on the selected SPI bus
 (defcfun "wiringPiSPIDataRW" :int (channel :int) (data :pointer) (len :int))
 
